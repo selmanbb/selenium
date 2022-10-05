@@ -2,6 +2,7 @@ package practice;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.tracing.opentelemetry.SeleniumSpanExporter;
 
 import java.time.Duration;
 
@@ -36,5 +37,33 @@ public class Q2 {
 
         String actOttoUrl = driver.getCurrentUrl();
         System.out.println("actOttoUrl = " + actOttoUrl);
+
+        if (actOttoTitle.contains("OTTO"))
+            System.out.println("Otto title test passed");
+        else
+            System.out.println("Otto title test failed");
+
+        if (actOttoUrl.contains("otto"))
+            System.out.println("Otto Url test passed");
+        else
+            System.out.println("Otto Url test failed");
+
+        driver.navigate().to("https://wisequarter.com");
+
+        boolean isTrue = driver.getTitle().contains("Quarter");
+
+        if (isTrue)
+            System.out.println("WQ title test passed");
+        else
+            System.out.println("WQ title test failed");
+
+        String wqUrl = driver.getCurrentUrl();
+
+        System.out.println(wqUrl.contains("quarter")? "WQ Url Test Passed" : "WQ Url Test Failed");
+
+        driver.navigate().back();
+        driver.navigate().refresh();
+        driver.navigate().forward();
+        driver.quit();
     }
 }
