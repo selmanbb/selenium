@@ -10,6 +10,8 @@ public class C01_firstClass {
         WebDriver driver= new ChromeDriver();
 
         driver.get("https://www.amazon.com");
+
+        driver.get("https://www.google.com");
     }
 
 }
